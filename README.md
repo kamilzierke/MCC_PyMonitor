@@ -44,7 +44,7 @@ Run the script:
 
 General Notes:
 
-Ensure you have network access to the IP 192.168.1.156 on port 8886, as specified in your Python script.
+Ensure you have network access to the IP f your device on port 8886, as specified in your Python script.
 Place the index.html file inside a templates folder in the same directory as your main.py.
 The Python script will start a Flask web server on http://localhost:5000. Open this URL in a web browser to view the application.
 

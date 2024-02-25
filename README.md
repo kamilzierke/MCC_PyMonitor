@@ -45,8 +45,10 @@ Run the script:
 General Notes:
 
 Ensure you have network access to the IP 192.168.1.156 on port 8886, as specified in your Python script.
-Place the index.html file inside a templates folder in the same directory as your app.py.
+Place the index.html file inside a templates folder in the same directory as your main.py.
 The Python script will start a Flask web server on http://localhost:5000. Open this URL in a web browser to view the application.
-The script will listen for UDP packets on port 8886 and update the web page with the received data. Make sure the device sending the data is configured to send to the correct IP address and port.
-The code assumes that the data received is in a specific binary format as defined by the format_string. Ensure that the sending device conforms to this format.
+
+The script will listen for UDP packets on port 8886 and update the web page with the received data. 
+Make sure the device sending the data is configured to send to the correct IP address and port.
+
 No virtualization is needed, and these instructions are for running the code directly on your local machine's operating system.

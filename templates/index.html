@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Battery Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* Add this line to make sure all columns have the same fixed width */
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+            width: calc(100% / 16); /* Divide by the number of columns to get even width */
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Battery Data</h1>
+    <table id="batteryTable">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Slot 01</th>
+                <th>Slot 02</th>
+                <th>Slot 03</th>
+                <th>Slot 04</th>
+                <th>Slot 05</th>
+                <th>Slot 06</th>
+                <th>Slot 07</th>
+                <th>Slot 08</th>
+                <th>Slot 09</th>
+                <th>Slot 10</th>
+                <th>Slot 11</th>
+                <th>Slot 12</th>
+                <th>Slot 13</th>
+                <th>Slot 14</th>
+                <th>Slot 15</th>
+                <th>Slot 16</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data rows will be inserted here by JavaScript -->
+        </tbody>
+    </table>
+    <script>
+        function fetchData() {
+            fetch('/data')
+                .then(response => response.json())
+                .then(data => {
+                    const tbody = document.querySelector('#batteryTable tbody');
+                    tbody.innerHTML = ''; // Clear existing rows
+                    const parameters = ['voltage', 'current', 'dischargeCap', 'chargeCap', 'esr', 'totalRuntime', 'setDischargeCycles', 'completedDischargeCycles', 'temperature', 'maxVolt', 'storeVolt', 'minVolt', 'cellGroupID', 'status'];
+                    parameters.forEach(param => {
+                        let row = `<tr><td>${param}</td>`;
+                        for (let i = 0; i < 16; i++) { // Assuming 16 slots
+                            let value = data[i] && data[i][param] !== undefined ? data[i][param] : 'N/A';
+                            row += `<td>${value}</td>`;
+                        }
+                        row += '</tr>';
+                        tbody.innerHTML += row; // Append new rows
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+        fetchData();
+        setInterval(fetchData, 100); // Refresh data every 5 seconds
+    </script>
+</body>
+</html>

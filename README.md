@@ -1,6 +1,7 @@
 # MCC_PyMonitor
 Very simple Flask app to read data from the MegaCell Charger
 
+![obraz](https://github.com/kamilzierke/MCC_PyMonitor/assets/67487992/4cd35a3c-606b-4830-a03f-6d4f37fb1a8d)
 
 To run the provided Python code with Flask, Pandas, and socket communication, you will need to have Python installed on your system, along with the Flask and Pandas libraries. 
 First donwload both files. Edit the main.py file with notepad and change the line 
